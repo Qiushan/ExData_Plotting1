@@ -11,8 +11,9 @@ test1$Sub_metering_1 <- as.numeric(as.character(test1$Sub_metering_1))
 test1$Sub_metering_2 <- as.numeric(as.character(test1$Sub_metering_2))
 test1$Sub_metering_3 <- as.numeric(as.character(test1$Sub_metering_3))
 
+png("plot2.png", width = 480, height = 480)
+
 par(mfrow=c(1,1))
 plot(test1$g, test1$Global_active_power, type="l", xlab = "", ylab="Global Active Power(kilowatts)")
 
-dev.copy(png, file="./plot2.png")
 dev.off()

@@ -11,6 +11,8 @@ test1$Sub_metering_1 <- as.numeric(as.character(test1$Sub_metering_1))
 test1$Sub_metering_2 <- as.numeric(as.character(test1$Sub_metering_2))
 test1$Sub_metering_3 <- as.numeric(as.character(test1$Sub_metering_3))
 
+png("plot4.png", width = 480, height = 480)
+
 par(mfrow = c(2,2))
 
 plot(test1$g, test1$Global_active_power, type="l", xlab = "", ylab="Global Active Power(kilowatts)")
@@ -27,5 +29,4 @@ legend("topright", pch=c(NA, NA,NA),col=c("black", "red", "blue"),legend = c("Su
 
 plot(test1$g, test1$Global_reactive_power, type="l", xlab = "datetime", ylab="Global_reactive_Power")
 
-dev.copy(png, file="./plot4.png")
 dev.off()

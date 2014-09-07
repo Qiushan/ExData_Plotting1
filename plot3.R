@@ -1,4 +1,4 @@
-test <- read.table("./data/household_power_consumption.txt", header = TRUE, sep = ";")
+test <- read.table("./household_power_consumption.txt", header = TRUE, sep = ";")
 f <- paste(test$Date, test$Time)
 g <- strptime(f, "%d/%m/%Y %H:%M:%S", tz="")
 test$g <- g
@@ -11,6 +11,8 @@ test1$Sub_metering_1 <- as.numeric(as.character(test1$Sub_metering_1))
 test1$Sub_metering_2 <- as.numeric(as.character(test1$Sub_metering_2))
 test1$Sub_metering_3 <- as.numeric(as.character(test1$Sub_metering_3))
 
+png("plot3.png", width = 480, height = 480)
+
 par(mfrow=c(1,1))
 lim = range(c(test1$Sub_metering_1, test1$Sub_metering_2,test1$Sub_metering_3))
 plot(test1$g, test1$Sub_metering_1,type="l", xlab="", ylab="Energy sub metering",ylim=lim)
@@ -21,5 +23,4 @@ plot(test1$g, test1$Sub_metering_3,type="l", col="blue", xlab="", ylab="",ylim=l
 
 legend("topright", pch=c(NA, NA,NA),col=c("black", "red", "blue"),legend = c("Sub_meeting_1","Sub_meeting_2","Sub_meeting_3"),lty=c(1,1,1))
 
-dev.copy(png, file="./plot3.png")
 dev.off()
